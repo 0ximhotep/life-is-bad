@@ -1,20 +1,41 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login Page</title>
+  <title>DIFM Free Install Pilot +</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: #f3f4f6;
+      background: #89CFF0; /* baby blue */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .top-left {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 14px;
+      color: #333;
       display: flex;
+      align-items: center;
+    }
+
+    .ring {
+      width: 12px;
+      height: 12px;
+      border: 2px solid #007bff;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .main-container {
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .login-container {
@@ -26,9 +47,16 @@
     }
 
     .login-container h2 {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       text-align: center;
       color: #333;
+    }
+
+    .login-container .subtext {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
+      font-size: 14px;
     }
 
     .login-container input[type="text"],
@@ -65,30 +93,38 @@
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login</h2>
-    <input type="text" id="username" placeholder="Username" />
-    <input type="password" id="password" placeholder="Password" />
-    <button onclick="login()">Login</button>
-    <div class="error-message" id="errorMsg">Invalid username or password</div>
+  <div class="top-left">
+    <div class="ring"></div>
+    Powered by Ring
+  </div>
+
+  <div class="main-container">
+    <div class="login-container">
+      <h2>DIFM Free Install Pilot +</h2>
+      <div class="subtext">Free credit $2000 </div>
+      <input type="text" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+      <div class="error-message" id="errorMsg">Invalid email or password</div>
+    </div>
   </div>
 
   <script>
     function login() {
-      const username = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
 
       // Dummy credentials
-      const validUser = "admin";
+      const validEmail = "admin@example.com";
       const validPass = "123456";
 
-      if (username === validUser && password === validPass) {
+      if (email === validEmail && password === validPass) {
         alert("Login successful!");
-        window.location.href = "dashboard.html"; // Replace or create this file
+        window.location.href = "dashboard.html";
       } else {
         document.getElementById("errorMsg").style.display = "block";
       }
     }
   </script>
-</body>
+</body><h1>0ximhotep</h1>
 </html>
